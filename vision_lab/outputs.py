@@ -9,7 +9,7 @@ from .detection import Candidate
 
 def write_csv(path: Path, columns: tuple[str, ...], rows: list[tuple]) -> None:
     with path.open("w", encoding="utf-8-sig", newline="") as file:
-        writer = csv.writer(file)
+        writer = csv.writer(file, lineterminator="\n")
         writer.writerow(columns)
         writer.writerows(rows)
 
