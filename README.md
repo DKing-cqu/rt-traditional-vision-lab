@@ -22,7 +22,7 @@ python -m pip install -r requirements.txt
 | --- | --- | --- |
 | 任务一 · 选择图像特征 | `python -m vision_lab task1` | `runs/task1/frame-100.png` |
 | 任务二 · 定位篮球漏检 | `python -m vision_lab task2` | `runs/task2/` 下的两张阶段图及 `candidates.csv` |
-| 任务三 · 评估闭运算的效果 | `python -m vision_lab task3` | `runs/task3/frame-150.png` |
+| 任务三 · 评估闭运算的效果 | `python -m vision_lab task3` | `runs/task3/frame-150.png` 和局部差异图 `mask-detail.png` |
 | 任务四 · 验证形状阈值改动 | `python -m vision_lab task4` | `runs/task4/` 下的逐帧对照图、`predictions.csv` 和空白结果表 `submission.csv` |
 
 - 运行时默认读取仓库自带的 `samples/basketball.mp4`。帧号从 0 开始。

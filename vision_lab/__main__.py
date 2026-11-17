@@ -68,6 +68,18 @@ def task3(output: Path) -> None:
                  ("After 5x5 closing", closed),
                  (detection_label("Before", before), detection_view(frame, before)),
                  (detection_label("After", after), detection_view(frame, after)))
+    difference = cv2.absdiff(mask, closed)
+    x, y, width, height = cv2.boundingRect(difference)
+    left, top = max(0, x - 12), max(0, y - 12)
+    crop = np.s_[top:top + max(height + 24, 64), left:left + max(width + 24, 72)]
+    details = [
+        cv2.resize(image[crop], None, fx=3, fy=3, interpolation=cv2.INTER_NEAREST)
+        for image in (mask, closed, difference)
+    ]
+    write_panels(output / "mask-detail.png",
+                 ("Before / enlarged", details[0]),
+                 ("After / enlarged", details[1]),
+                 (f"Changed pixels: {cv2.countNonZero(difference)}", details[2]))
 
 
 def task4(output: Path) -> None:
